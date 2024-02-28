@@ -1,10 +1,8 @@
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import api from "./api";
 
 const login = async (username: string, password: string): Promise<UserData> => {
     try {
-        const response = await axios.post<UserData>(API_URL + "login/", {
+        const response = await api.post<UserData>("/login/", {
             username,
             password,
         });
@@ -22,7 +20,7 @@ const signup = async (
     email: string
 ): Promise<UserData> => {
     try {
-        const response = await axios.post<UserData>(API_URL + "signup/", {
+        const response = await api.post<UserData>("/signup/", {
             email,
             username,
             password,
@@ -35,9 +33,9 @@ const signup = async (
     }
 };
 
-const logout = async (): Promise<unknown> => {
+const logout = async (): Promise<void> => {
     try {
-        await axios.post(API_URL + "logout/");
+        await api.post("/logout/");
         return;
     } catch (error) {
         throw new Error("Failed to logout");

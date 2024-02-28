@@ -2,6 +2,7 @@ import { Login, Register } from "./pages/auth";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./routing/ProtectedRoute";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Home from "./pages/home/Home";
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
 
                     {/* Protected routes */}
                     <Route element={<ProtectedRoute />}>
-                        <Route path="home" element={<>Hello World!</>} />
+                        <Route path="home" element={<Home />} />
                     </Route>
 
                     {/* Redirect all unknown routes to login page */}

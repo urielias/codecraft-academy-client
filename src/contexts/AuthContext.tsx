@@ -1,9 +1,11 @@
+import api from "../services/api";
 import authService from "../services/authService";
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 interface AuthContextType {
     user: UserData | null;
     isAuthenticated: boolean;
+    loading: boolean;
     login: (username: string, password: string) => Promise<void>;
     signup: (
         username: string,
@@ -19,6 +21,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<UserData | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [interceptorID, setInterceptorID] = useState<number>();
 
     useEffect(() => {
         const storedUserData = localStorage.getItem("userData");
@@ -27,9 +31,30 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     }, []);
 
+    useEffect(() => {
+        setLoading(true);
+        if (user && !interceptorID) {
+            setInterceptorID(
+                api.interceptors.request.use(
+                    (config) => {
+                        config.headers.Authorization = `Token ${user.token}`;
+                        return config;
+                    },
+                    (error) => {
+                        return Promise.reject(error);
+                    }
+                )
+            );
+        } else if (!user) {
+            if (interceptorID) {
+                api.interceptors.request.eject(interceptorID);
+            }
+        }
+        setLoading(false);
+    }, [user, interceptorID]);
+
     const login = async (username: string, password: string) => {
         const userData = await authService.login(username, password);
-        console.log(32, userData);
         localStorage.setItem("userData", JSON.stringify(userData));
         setUser(userData);
     };
@@ -55,6 +80,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const value = {
         user,
         isAuthenticated: !!user,
+        loading,
         login,
         signup,
         logout,
