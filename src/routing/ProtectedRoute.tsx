@@ -1,5 +1,8 @@
+import styling from "./routing.module.css";
 import { useAuth } from "../contexts/AuthContext";
 import { Navigate, Outlet } from "react-router-dom";
+import Sidebar from "./Sidebar";
+import SearchBar from "./SearchBar";
 
 const ProtectedRoute = () => {
     const { isAuthenticated, loading } = useAuth();
@@ -8,7 +11,19 @@ const ProtectedRoute = () => {
         return <div>Loading...</div>;
     }
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+    return isAuthenticated ? (
+        <div className={styling.mainContent}>
+            <Sidebar />
+            <div className={styling.secondaryContent}>
+                <SearchBar />
+                <div className={styling.pageContent}>
+                    <Outlet />
+                </div>
+            </div>
+        </div>
+    ) : (
+        <Navigate to="/login" replace />
+    );
 };
 
 export default ProtectedRoute;

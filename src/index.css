@@ -1,5 +1,14 @@
 * {
+    overflow: hidden;
+    margin-block-end: 0;
+    margin-block-start: 0;
     font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    color: #ffffff;
+    background-color: #0d1117;
 }
 
 button {
@@ -11,12 +20,14 @@ button {
     border-radius: 8px;
     align-items: center;
     justify-content: center;
-    background-color: cadetblue;
+    background-color: #2a64f6;
 }
 
 input {
     all: unset;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+a {
+    all: unset;
+    cursor: pointer;
 }

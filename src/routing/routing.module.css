@@ -1,0 +1,116 @@
+.mainContent {
+    inset: 0;
+    display: flex;
+    position: absolute;
+}
+
+.secondaryContent {
+    flex: 1;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 0 20px;
+}
+
+.pageContent {
+    flex: 1;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #000000;
+}
+
+.sidebarMain {
+    width: 250px;
+    padding: 20px;
+    display: flex;
+    color: #ffffff;
+    flex-direction: column;
+    background-color: #000000;
+}
+
+.sidebarLogo {
+    display: flex;
+    align-items: center;
+}
+
+.sidebarLogo > img {
+    width: 100px;
+    height: 100px;
+    overflow: visible;
+}
+
+.sidebarMenu {
+    margin-top: 20px;
+    margin-left: 10px;
+    color: #7c7c7c;
+}
+
+.sidebarDivider {
+    width: 100%;
+    height: 1px;
+    margin-top: 30px;
+    background-color: #7c7c7c;
+}
+
+.sections {
+    gap: 20px;
+    display: flex;
+    margin-top: 30px;
+    flex-direction: column;
+}
+
+.sections > a {
+    padding: 16px;
+    display: flex;
+    color: #7c7c7c;
+}
+
+.activeSection {
+    color: #ffffff !important;
+    border-radius: 10px;
+    background-color: #2a64f6;
+}
+
+.filler {
+    flex: 1;
+}
+
+.profile {
+    gap: 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 50px;
+    background-color: #0d1117;
+}
+
+.profile > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.searchbarContainer {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.searchbarMain {
+    width: 300px;
+    height: 70px;
+    display: flex;
+    padding: 0 24px;
+    align-items: center;
+    border-radius: 35px;
+    border: 1px solid #7c7c7c;
+}
+
+.searchbarButton {
+    width: 40px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #2a64f6;
+}

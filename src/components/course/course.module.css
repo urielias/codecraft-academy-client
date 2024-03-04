@@ -1,0 +1,20 @@
+.coursePreview {
+    gap: 20px;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    color: #fefefe;
+    border-radius: 20px;
+    flex-direction: column;
+    background-color: #13191f;
+    flex-shrink: 0;
+}
+
+.coursePreviewButton {
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #5e6070;
+    background-color: transparent;
+}

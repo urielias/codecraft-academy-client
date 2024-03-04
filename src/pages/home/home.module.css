@@ -1,0 +1,6 @@
+.courseList {
+    gap: 24px;
+    display: flex;
+    overflow: auto;
+    margin-top: 16px;
+}
